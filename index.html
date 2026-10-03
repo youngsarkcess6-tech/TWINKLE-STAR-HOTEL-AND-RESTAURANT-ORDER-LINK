@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TWINKLE STAR Hotel House and Restaurant</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TWINKLE STAR Hotel House and Restaurant</title><style>
 * {
     box-sizing: border-box;
 }
@@ -19,7 +14,7 @@ body {
 }
 
 header {
-    background: #12355b;
+    background: #087f5b;
     color: white;
     text-align: center;
     padding: 25px 15px;
@@ -34,58 +29,51 @@ header p {
     margin: 8px 0 0;
 }
 
-nav {
-    background: #0b2540;
-    padding: 12px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 6px;
-    font-weight: bold;
-}
-
 .container {
-    max-width: 950px;
+    max-width: 900px;
     margin: auto;
-    padding: 15px;
-}
-
-.card {
-    background: white;
     padding: 20px;
-    margin: 15px 0;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 h2 {
-    color: #12355b;
+    text-align: center;
+    color: #087f5b;
+    margin-top: 25px;
 }
 
-.room-grid,
-.food-grid {
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
 }
 
 .room,
 .food {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    background: #fafafa;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 18px;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.room:hover,
+.food:hover {
+    transform: scale(1.02);
+    border-color: #087f5b;
+}
+
+.room.selected,
+.food.selected {
+    border-color: #087f5b;
+    background: #e6f7f1;
+    box-shadow: 0 0 0 3px rgba(8,127,91,0.15);
 }
 
 .room h3,
 .food h3 {
     margin-top: 0;
+    color: #087f5b;
 }
 
 .price {
@@ -95,591 +83,292 @@ h2 {
     margin: 8px 0;
 }
 
-button {
-    border: none;
-    border-radius: 8px;
-    padding: 12px 15px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 8px;
+.select-text {
+    color: #555;
+    font-size: 14px;
 }
 
-.select-room {
-    background: #12355b;
-    color: white;
-    width: 100%;
-}
-
-.whatsapp {
-    background: #25D366;
-    color: white;
-    width: 100%;
-    font-size: 17px;
-}
-
-.payment {
-    background: #fff8e1;
-    border: 2px solid #f0b400;
-}
-
-.payment-number {
-    font-size: 25px;
-    font-weight: bold;
-    color: #12355b;
-}
-
-.account-name {
-    font-size: 19px;
+.room.selected .select-text,
+.food.selected .select-text {
+    color: #087f5b;
     font-weight: bold;
 }
 
-.call {
-    background: #12355b;
-    color: white;
-    width: 100%;
-    font-size: 17px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 12px;
-    margin: 7px 0 15px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    font-size: 16px;
-}
-
-label {
-    font-weight: bold;
-}
-
-.summary {
-    background: #eef7ff;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-
-.notice {
-    background: #fff3cd;
-    padding: 12px;
-    border-radius: 8px;
-    margin: 12px 0;
-}
-
-footer {
-    background: #12355b;
-    color: white;
-    text-align: center;
+form {
+    background: white;
     padding: 20px;
+    border-radius: 12px;
     margin-top: 25px;
 }
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 22px;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 5px;
-    }
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
 }
-</style>
-</head>
 
-<body>
-
-<header>
-    <h1>TWINKLE STAR Hotel House and Restaurant</h1>
-    <p>Hotel Rooms • Restaurant • Pastries</p>
-</header>
-
-<nav>
-    <a href="#rooms">Rooms</a>
-    <a href="#booking">Book</a>
-    <a href="#food">Food</a>
-    <a href="#pastries">Pastries</a>
-    <a href="#payment">Payment</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="container">
-
-<section class="card">
-    <h2>Welcome to TWINKLE STAR</h2>
-
-    <p>
-        Welcome to TWINKLE STAR Hotel House and Restaurant.
-        Book a room, enjoy delicious meals, and order pastries.
-    </p>
-
-    <div class="notice">
-        <strong>Phone:</strong> 0957793508<br>
-        <strong>Phone:</strong> 0244041545<br>
-        <strong>WhatsApp:</strong> 0244041545
-    </div>
-</section>
-
-
-<section class="card" id="rooms">
-    <h2>Our Rooms</h2>
-
-    <div class="room-grid">
-
-        <div class="room">
-            <h3>Room 1</h3>
-            <div class="price">GH₵300 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 1',300)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 2</h3>
-            <div class="price">GH₵300 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 2',300)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 3</h3>
-            <div class="price">GH₵150 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 3',150)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 4</h3>
-            <div class="price">GH₵150 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 4',150)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 5</h3>
-            <div class="price">GH₵300 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 5',300)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 6</h3>
-            <div class="price">GH₵300 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 6',300)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 7</h3>
-            <div class="price">GH₵100 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 7',100)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 8</h3>
-            <div class="price">GH₵100 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 8',100)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 9</h3>
-            <div class="price">GH₵500 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 9',500)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 10</h3>
-            <div class="price">GH₵200 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 10',200)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 11</h3>
-            <div class="price">GH₵300 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 11',300)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 12</h3>
-            <div class="price">GH₵400 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 12',400)">
-                Select Room
-            </button>
-        </div>
-
-        <div class="room">
-            <h3>Room 13</h3>
-            <div class="price">GH₵150 / night</div>
-            <button class="select-room" onclick="selectRoom('Room 13',150)">
-                Select Room
-            </button>
-        </div>
-
-    </div>
-</section>
-
-
-<section class="card" id="booking">
-    <h2>Book a Room</h2>
-
-    <form>
-
-        <label>Your Name</label>
-        <input type="text" id="name" placeholder="Enter your full name" required>
-
-        <label>Phone Number</label>
-        <input type="tel" id="phone" placeholder="Enter your phone number" required>
-
-        <label>Number of Guests</label>
-        <input type="number" id="guests" min="1" value="1" required>
-
-        <label>Check-in Date</label>
-        <input type="date" id="checkin" required>
-
-        <label>Check-out Date</label>
-        <input type="date" id="checkout" required>
-
-        <div class="summary">
-            <strong>Selected Room:</strong>
-            <div id="selectedRoom">Please select a room above.</div>
-
-            <br>
-
-            <strong>Number of Nights:</strong>
-            <div id="nights">0</div>
-
-            <br>
-
-            <strong>Total Room Cost:</strong>
-            <div id="total">GH₵0</div>
-        </div>
-
-        <button type="button" class="whatsapp" onclick="sendBooking()">
-            📱 Send Booking on WhatsApp
-        </button>
-
-    </form>
-</section>
-
-
-<section class="card" id="food">
-    <h2>Restaurant Food</h2>
-
-    <div class="food-grid">
-
-        <div class="food">
-            <h3>Jolof Rice</h3>
-            <div class="price">GH₵50</div>
-        </div>
-
-        <div class="food">
-            <h3>Fried Rice</h3>
-            <div class="price">GH₵50</div>
-        </div>
-
-        <div class="food">
-            <h3>Special Jolof or Fried</h3>
-            <div class="price">GH₵100</div>
-        </div>
-
-        <div class="food">
-            <h3>Banku and Tilapia</h3>
-            <div class="price">GH₵100</div>
-        </div>
-
-        <div class="food">
-            <h3>Banku and Okro</h3>
-            <div class="price">GH₵60</div>
-        </div>
-
-        <div class="food">
-            <h3>Plain Rice</h3>
-            <div class="price">GH₵50</div>
-        </div>
-
-        <div class="food">
-            <h3>French Fries</h3>
-            <div class="price">GH₵70</div>
-        </div>
-
-        <div class="food">
-            <h3>Salad with Fish</h3>
-            <div class="price">GH₵70</div>
-        </div>
-
-        <div class="food">
-            <h3>Salad with Egg</h3>
-            <div class="price">GH₵60</div>
-        </div>
-
-    </div>
-</section>
-
-
-<section class="card" id="pastries">
-    <h2>Pastries</h2>
-
-    <div class="food-grid">
-
-        <div class="food">
-            <h3>Pizza - Small Size</h3>
-            <div class="price">GH₵120</div>
-        </div>
-
-        <div class="food">
-            <h3>Pizza - Medium Size</h3>
-            <div class="price">GH₵170 / GH₵260</div>
-        </div>
-
-        <div class="food">
-            <h3>Family Size Pizza</h3>
-            <div class="price">GH₵200</div>
-            <p>With extra and Coke</p>
-        </div>
-
-    </div>
-</section>
-
-
-<section class="card payment" id="payment">
-
-    <h2>💰 Mobile Money Payment</h2>
-
-    <p>
-        You can make your payment through Mobile Money.
-    </p>
-
-    <p><strong>Send Money To:</strong></p>
-
-    <div class="payment-number">
-        0597793508
-    </div>
-
-    <p><strong>Account Name:</strong></p>
-
-    <div class="account-name">
-        TWINKLE STAR aged concern
-    </div>
-
-    <div class="notice">
-        <strong>Payment Instructions</strong>
-        <ol>
-            <li>Send the required amount to <strong>0597793508</strong>.</li>
-            <li>Check that the name displayed is <strong>TWINKLE STAR aged concern</strong>.</li>
-            <li>Complete your payment.</li>
-            <li>Keep your Mobile Money transaction ID.</li>
-            <li>Send your booking details and transaction ID to us on WhatsApp.</li>
-        </ol>
-    </div>
-
-    <button class="whatsapp" onclick="paymentConfirmation()">
-        💬 Send Payment Confirmation on WhatsApp
-    </button>
-
-</section>
-
-
-<section class="card" id="contact">
-
-    <h2>Contact Us</h2>
-
-    <p><strong>Phone:</strong> 0957793508</p>
-    <p><strong>Phone:</strong> 0244041545</p>
-    <p><strong>WhatsApp:</strong> 0244041545</p>
-
-    <button class="whatsapp" onclick="openWhatsApp()">
-        💬 Chat with us on WhatsApp
-    </button>
-
-    <button class="call" onclick="callHotel()">
-        📞 Call 0244041545
-    </button>
-
-</section>
-
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 90px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 20px;
+    background: #087f5b;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #066b4d;
+}
+
+#summary {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 25px;
+    display: none;
+}
+
+#summary h3 {
+    color: #087f5b;
+}
+
+footer {
+    text-align: center;
+    background: #222;
+    color: white;
+    padding: 20px;
+    margin-top: 30px;
+}
+</style></head><body><header>
+    <h1>TWINKLE STAR HOTEL HOUSE AND RESTAURANT</h1>
+    <p>Comfort • Hospitality • Delicious Food</p>
+</header><div class="container"><h2>Select a Room</h2><div class="grid"><div class="room" onclick="selectRoom(this, 'Standard Room', 250)">
+    <h3>Standard Room</h3>
+    <p>Comfortable room for your stay.</p>
+    <div class="price">GH₵250 per night</div>
+    <div class="select-text">Tap to select this room</div>
 </div>
 
+<div class="room" onclick="selectRoom(this, 'Deluxe Room', 400)">
+    <h3>Deluxe Room</h3>
+    <p>Spacious room with extra comfort.</p>
+    <div class="price">GH₵400 per night</div>
+    <div class="select-text">Tap to select this room</div>
+</div>
 
-<footer>
-    <p>© 2026 TWINKLE STAR Hotel House and Restaurant</p>
-    <p>Rooms • Restaurant • Pastries</p>
-</footer>
+<div class="room" onclick="selectRoom(this, 'Executive Room', 600)">
+    <h3>Executive Room</h3>
+    <p>Premium room for a special stay.</p>
+    <div class="price">GH₵600 per night</div>
+    <div class="select-text">Tap to select this room</div>
+</div>
 
+</div><h2>Order Food</h2><div class="grid"><div class="food" onclick="toggleFood(this, 'Jollof Rice', 50)">
+    <h3>Jollof Rice</h3>
+    <p>Delicious Ghana-style jollof rice.</p>
+    <div class="price">GH₵50</div>
+    <div class="select-text">Tap to select</div>
+</div>
 
-<script>
+<div class="food" onclick="toggleFood(this, 'Fried Rice', 55)">
+    <h3>Fried Rice</h3>
+    <p>Tasty fried rice with your choice of protein.</p>
+    <div class="price">GH₵55</div>
+    <div class="select-text">Tap to select</div>
+</div>
 
-let selectedRoom = "";
-let selectedPrice = 0;
+<div class="food" onclick="toggleFood(this, 'Fried Chicken', 45)">
+    <h3>Fried Chicken</h3>
+    <p>Crispy and tasty fried chicken.</p>
+    <div class="price">GH₵45</div>
+    <div class="select-text">Tap to select</div>
+</div>
 
+<div class="food" onclick="toggleFood(this, 'Grilled Chicken', 60)">
+    <h3>Grilled Chicken</h3>
+    <p>Well-seasoned grilled chicken.</p>
+    <div class="price">GH₵60</div>
+    <div class="select-text">Tap to select</div>
+</div>
 
-function selectRoom(room, price) {
+<div class="food" onclick="toggleFood(this, 'Waakye', 40)">
+    <h3>Waakye</h3>
+    <p>Traditional Ghanaian waakye meal.</p>
+    <div class="price">GH₵40</div>
+    <div class="select-text">Tap to select</div>
+</div>
 
-    selectedRoom = room;
-    selectedPrice = price;
+<div class="food" onclick="toggleFood(this, 'Banku and Tilapia', 80)">
+    <h3>Banku & Tilapia</h3>
+    <p>Banku served with grilled tilapia.</p>
+    <div class="price">GH₵80</div>
+    <div class="select-text">Tap to select</div>
+</div>
 
-    document.getElementById("selectedRoom").innerHTML =
-        room + " - GH₵" + price + " per night";
+</div><form onsubmit="submitOrder(event)"><h2>Customer Information</h2>
 
-    calculateTotal();
+<label for="name">Full Name</label>
+<input type="text" id="name" placeholder="Enter your name" required>
 
-    document.getElementById("booking").scrollIntoView({
-        behavior: "smooth"
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+<label for="date">Date</label>
+<input type="date" id="date" required>
+
+<label for="message">Additional Request</label>
+<textarea id="message" placeholder="Enter any additional request"></textarea>
+
+<button type="submit">Submit Booking / Food Order</button>
+
+</form><div id="summary"></div></div><footer>
+    <p>© 2026 TWINKLE STAR HOTEL HOUSE AND RESTAURANT</p>
+</footer><script>
+
+let selectedRoom = null;
+let selectedFoods = [];
+
+function selectRoom(element, roomName, price) {
+
+    document.querySelectorAll('.room').forEach(function(room) {
+        room.classList.remove('selected');
+        room.querySelector('.select-text').textContent =
+            'Tap to select this room';
+    });
+
+    element.classList.add('selected');
+
+    element.querySelector('.select-text').textContent =
+        '✓ Room selected';
+
+    selectedRoom = {
+        name: roomName,
+        price: price
+    };
+}
+
+function toggleFood(element, foodName, price) {
+
+    const existingFood = selectedFoods.find(
+        food => food.name === foodName
+    );
+
+    if (existingFood) {
+
+        selectedFoods = selectedFoods.filter(
+            food => food.name !== foodName
+        );
+
+        element.classList.remove('selected');
+
+        element.querySelector('.select-text').textContent =
+            'Tap to select';
+
+    } else {
+
+        selectedFoods.push({
+            name: foodName,
+            price: price
+        });
+
+        element.classList.add('selected');
+
+        element.querySelector('.select-text').textContent =
+            '✓ Food selected';
+    }
+}
+
+function submitOrder(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const date = document.getElementById('date').value;
+    const message = document.getElementById('message').value;
+
+    if (!selectedRoom && selectedFoods.length === 0) {
+
+        alert('Please select a room or at least one food item.');
+
+        return;
+    }
+
+    let total = 0;
+
+    let roomText = 'No room selected';
+
+    if (selectedRoom) {
+
+        roomText =
+            selectedRoom.name +
+            ' - GH₵' +
+            selectedRoom.price;
+
+        total += selectedRoom.price;
+    }
+
+    let foodText = 'No food selected';
+
+    if (selectedFoods.length > 0) {
+
+        foodText = selectedFoods.map(function(food) {
+
+            total += food.price;
+
+            return food.name + ' - GH₵' + food.price;
+
+        }).join('<br>');
+    }
+
+    const summary = document.getElementById('summary');
+
+    summary.style.display = 'block';
+
+    summary.innerHTML = `
+        <h3>Order Submitted</h3>
+
+        <p><strong>Name:</strong> ${name}</p>
+
+        <p><strong>Phone:</strong> ${phone}</p>
+
+        <p><strong>Date:</strong> ${date}</p>
+
+        <p><strong>Room:</strong><br>${roomText}</p>
+
+        <p><strong>Food:</strong><br>${foodText}</p>
+
+        <p><strong>Additional Request:</strong><br>
+        ${message || 'None'}
+        </p>
+
+        <h3>Total: GH₵${total}</h3>
+
+        <p>Thank you for choosing TWINKLE STAR HOTEL HOUSE AND RESTAURANT.</p>
+    `;
+
+    summary.scrollIntoView({
+        behavior: 'smooth'
     });
 }
 
-
-function calculateTotal() {
-
-    let checkin = document.getElementById("checkin").value;
-    let checkout = document.getElementById("checkout").value;
-
-    if (!checkin || !checkout || selectedPrice === 0) {
-        document.getElementById("nights").innerHTML = "0";
-        document.getElementById("total").innerHTML = "GH₵0";
-        return;
-    }
-
-    let start = new Date(checkin);
-    let end = new Date(checkout);
-
-    let difference = end - start;
-
-    let nights = Math.ceil(
-        difference / (1000 * 60 * 60 * 24)
-    );
-
-    if (nights <= 0) {
-        document.getElementById("nights").innerHTML =
-            "Invalid dates";
-
-        document.getElementById("total").innerHTML =
-            "GH₵0";
-
-        return;
-    }
-
-    let total = nights * selectedPrice;
-
-    document.getElementById("nights").innerHTML =
-        nights;
-
-    document.getElementById("total").innerHTML =
-        "GH₵" + total;
-}
-
-
-document.getElementById("checkin").addEventListener(
-    "change",
-    calculateTotal
-);
-
-document.getElementById("checkout").addEventListener(
-    "change",
-    calculateTotal
-);
-
-
-function sendBooking() {
-
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let guests = document.getElementById("guests").value;
-    let checkin = document.getElementById("checkin").value;
-    let checkout = document.getElementById("checkout").value;
-
-    if (!selectedRoom) {
-        alert("Please select a room first.");
-        return;
-    }
-
-    if (!name || !phone || !checkin || !checkout) {
-        alert("Please complete all booking details.");
-        return;
-    }
-
-    let start = new Date(checkin);
-    let end = new Date(checkout);
-
-    let nights = Math.ceil(
-        (end - start) / (1000 * 60 * 60 * 24)
-    );
-
-    if (nights <= 0) {
-        alert("Please select a valid check-out date.");
-        return;
-    }
-
-    let total = nights * selectedPrice;
-
-    let message =
-        "Hello TWINKLE STAR Hotel House and Restaurant,%0A%0A" +
-        "I would like to make a room booking.%0A%0A" +
-        "Name: " + encodeURIComponent(name) + "%0A" +
-        "Phone: " + encodeURIComponent(phone) + "%0A" +
-        "Guests: " + guests + "%0A" +
-        "Room: " + encodeURIComponent(selectedRoom) + "%0A" +
-        "Check-in: " + checkin + "%0A" +
-        "Check-out: " + checkout + "%0A" +
-        "Nights: " + nights + "%0A" +
-        "Total: GH₵" + total + "%0A%0A" +
-        "Mobile Money: 0597793508%0A" +
-        "Account Name: TWINKLE STAR aged concern";
-
-    window.open(
-        "https://wa.me/233244041545?text=" + message,
-        "_blank"
-    );
-}
-
-
-function paymentConfirmation() {
-
-    let message =
-        "Hello TWINKLE STAR Hotel House and Restaurant,%0A%0A" +
-        "I have made a Mobile Money payment.%0A%0A" +
-        "Mobile Money Number: 0597793508%0A" +
-        "Account Name: TWINKLE STAR aged concern%0A%0A" +
-        "My transaction ID is: ";
-
-    window.open(
-        "https://wa.me/233244041545?text=" + message,
-        "_blank"
-    );
-}
-
-
-function openWhatsApp() {
-
-    window.open(
-        "https://wa.me/233244041545",
-        "_blank"
-    );
-}
-
-
-function callHotel() {
-
-    window.location.href = "tel:0244041545";
-}
-
-</script>
-
-</body>
-</html> 
+</script></body>
+</html>
