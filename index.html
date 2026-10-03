@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TWINKLE STAR Hotel House and Restaurant</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TWINKLE STAR Hotel House and Restaurant</title>
+
+<style>
 * {
     box-sizing: border-box;
 }
@@ -21,59 +26,101 @@ header {
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 0 8px;
     font-size: 28px;
 }
 
 header p {
-    margin: 8px 0 0;
+    margin: 5px;
+}
+
+nav {
+    background: #064f3c;
+    padding: 10px;
+    text-align: center;
+}
+
+nav button {
+    background: white;
+    color: #064f3c;
+    border: none;
+    padding: 10px 15px;
+    margin: 4px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1100px;
     margin: auto;
+    padding: 15px;
+}
+
+.section {
+    background: white;
+    margin: 15px 0;
     padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 h2 {
-    text-align: center;
     color: #087f5b;
-    margin-top: 25px;
+    margin-top: 0;
+}
+
+h3 {
+    color: #064f3c;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    font-size: 16px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 15px;
 }
 
-.room,
-.food {
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    padding: 18px;
-    background: white;
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fafafa;
+}
+
+.room-card {
     cursor: pointer;
     transition: 0.2s;
 }
 
-.room:hover,
-.food:hover {
-    transform: scale(1.02);
+.room-card:hover {
+    transform: translateY(-2px);
     border-color: #087f5b;
 }
 
-.room.selected,
-.food.selected {
-    border-color: #087f5b;
-    background: #e6f7f1;
-    box-shadow: 0 0 0 3px rgba(8,127,91,0.15);
+.room-card.selected {
+    border: 3px solid #087f5b;
+    background: #e9fff7;
 }
 
-.room h3,
-.food h3 {
+.room-card h3 {
     margin-top: 0;
-    color: #087f5b;
 }
 
 .price {
@@ -83,292 +130,1158 @@ h2 {
     margin: 8px 0;
 }
 
-.select-text {
-    color: #555;
-    font-size: 14px;
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-.room.selected .select-text,
-.food.selected .select-text {
-    color: #087f5b;
-    font-weight: bold;
-}
-
-form {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 25px;
-}
-
-label {
-    display: block;
-    margin-top: 12px;
-    font-weight: bold;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-textarea {
-    min-height: 90px;
-}
-
-button {
-    width: 100%;
+.quantity button {
+    width: 38px;
+    height: 38px;
     border: none;
-    border-radius: 8px;
-    padding: 14px;
-    margin-top: 20px;
     background: #087f5b;
     color: white;
-    font-size: 18px;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.quantity input {
+    width: 70px;
+    text-align: center;
+    margin: 0;
+}
+
+button.primary {
+    background: #087f5b;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 7px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
-button:hover {
-    background: #066b4d;
+button.primary:hover {
+    background: #056b4c;
 }
 
-#summary {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 25px;
-    display: none;
+button.secondary {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
-#summary h3 {
+.total-box {
+    background: #e9fff7;
+    border: 2px solid #087f5b;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.total {
+    font-size: 26px;
+    font-weight: bold;
     color: #087f5b;
 }
 
-footer {
-    text-align: center;
-    background: #222;
+.payment-box {
+    background: #fff8df;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e4c75d;
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.admin-table th {
+    background: #087f5b;
     color: white;
-    padding: 20px;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #666;
+}
+
+footer {
+    background: #064f3c;
+    color: white;
+    text-align: center;
+    padding: 25px;
     margin-top: 30px;
 }
-</style></head><body><header>
-    <h1>TWINKLE STAR HOTEL HOUSE AND RESTAURANT</h1>
-    <p>Comfort • Hospitality • Delicious Food</p>
-</header><div class="container"><h2>Select a Room</h2><div class="grid"><div class="room" onclick="selectRoom(this, 'Standard Room', 250)">
-    <h3>Standard Room</h3>
-    <p>Comfortable room for your stay.</p>
-    <div class="price">GH₵250 per night</div>
-    <div class="select-text">Tap to select this room</div>
-</div>
 
-<div class="room" onclick="selectRoom(this, 'Deluxe Room', 400)">
-    <h3>Deluxe Room</h3>
-    <p>Spacious room with extra comfort.</p>
-    <div class="price">GH₵400 per night</div>
-    <div class="select-text">Tap to select this room</div>
-</div>
-
-<div class="room" onclick="selectRoom(this, 'Executive Room', 600)">
-    <h3>Executive Room</h3>
-    <p>Premium room for a special stay.</p>
-    <div class="price">GH₵600 per night</div>
-    <div class="select-text">Tap to select this room</div>
-</div>
-
-</div><h2>Order Food</h2><div class="grid"><div class="food" onclick="toggleFood(this, 'Jollof Rice', 50)">
-    <h3>Jollof Rice</h3>
-    <p>Delicious Ghana-style jollof rice.</p>
-    <div class="price">GH₵50</div>
-    <div class="select-text">Tap to select</div>
-</div>
-
-<div class="food" onclick="toggleFood(this, 'Fried Rice', 55)">
-    <h3>Fried Rice</h3>
-    <p>Tasty fried rice with your choice of protein.</p>
-    <div class="price">GH₵55</div>
-    <div class="select-text">Tap to select</div>
-</div>
-
-<div class="food" onclick="toggleFood(this, 'Fried Chicken', 45)">
-    <h3>Fried Chicken</h3>
-    <p>Crispy and tasty fried chicken.</p>
-    <div class="price">GH₵45</div>
-    <div class="select-text">Tap to select</div>
-</div>
-
-<div class="food" onclick="toggleFood(this, 'Grilled Chicken', 60)">
-    <h3>Grilled Chicken</h3>
-    <p>Well-seasoned grilled chicken.</p>
-    <div class="price">GH₵60</div>
-    <div class="select-text">Tap to select</div>
-</div>
-
-<div class="food" onclick="toggleFood(this, 'Waakye', 40)">
-    <h3>Waakye</h3>
-    <p>Traditional Ghanaian waakye meal.</p>
-    <div class="price">GH₵40</div>
-    <div class="select-text">Tap to select</div>
-</div>
-
-<div class="food" onclick="toggleFood(this, 'Banku and Tilapia', 80)">
-    <h3>Banku & Tilapia</h3>
-    <p>Banku served with grilled tilapia.</p>
-    <div class="price">GH₵80</div>
-    <div class="select-text">Tap to select</div>
-</div>
-
-</div><form onsubmit="submitOrder(event)"><h2>Customer Information</h2>
-
-<label for="name">Full Name</label>
-<input type="text" id="name" placeholder="Enter your name" required>
-
-<label for="phone">Phone Number</label>
-<input type="tel" id="phone" placeholder="Enter your phone number" required>
-
-<label for="date">Date</label>
-<input type="date" id="date" required>
-
-<label for="message">Additional Request</label>
-<textarea id="message" placeholder="Enter any additional request"></textarea>
-
-<button type="submit">Submit Booking / Food Order</button>
-
-</form><div id="summary"></div></div><footer>
-    <p>© 2026 TWINKLE STAR HOTEL HOUSE AND RESTAURANT</p>
-</footer><script>
-
-let selectedRoom = null;
-let selectedFoods = [];
-
-function selectRoom(element, roomName, price) {
-
-    document.querySelectorAll('.room').forEach(function(room) {
-        room.classList.remove('selected');
-        room.querySelector('.select-text').textContent =
-            'Tap to select this room';
-    });
-
-    element.classList.add('selected');
-
-    element.querySelector('.select-text').textContent =
-        '✓ Room selected';
-
-    selectedRoom = {
-        name: roomName,
-        price: price
-    };
+.success {
+    background: #e8fff1;
+    border: 1px solid #45a36b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
 }
 
-function toggleFood(element, foodName, price) {
+@media(max-width:600px) {
+    header h1 {
+        font-size: 23px;
+    }
 
-    const existingFood = selectedFoods.find(
-        food => food.name === foodName
-    );
-
-    if (existingFood) {
-
-        selectedFoods = selectedFoods.filter(
-            food => food.name !== foodName
-        );
-
-        element.classList.remove('selected');
-
-        element.querySelector('.select-text').textContent =
-            'Tap to select';
-
-    } else {
-
-        selectedFoods.push({
-            name: foodName,
-            price: price
-        });
-
-        element.classList.add('selected');
-
-        element.querySelector('.select-text').textContent =
-            '✓ Food selected';
+    .section {
+        padding: 15px;
     }
 }
+</style>
+</head>
 
-function submitOrder(event) {
+<body>
 
-    event.preventDefault();
+<header>
+    <h1>TWINKLE STAR HOTEL HOUSE AND RESTAURANT</h1>
+    <p>Hotel Booking • Food • Pastries • Pizza</p>
+    <p>WhatsApp: 0244041545</p>
+</header>
 
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const date = document.getElementById('date').value;
-    const message = document.getElementById('message').value;
+<nav>
+    <button onclick="goTo('booking')">Room Booking</button>
+    <button onclick="goTo('food')">Food & Pizza</button>
+    <button onclick="goTo('summary')">My Order</button>
+    <button onclick="openAdmin()">Admin</button>
+</nav>
 
-    if (!selectedRoom && selectedFoods.length === 0) {
+<div class="container">
 
-        alert('Please select a room or at least one food item.');
+<!-- CUSTOMER INFORMATION -->
+<section class="section" id="booking">
+    <h2>Customer Information</h2>
+
+    <div class="grid">
+        <div>
+            <label>Customer Name</label>
+            <input type="text" id="customerName" placeholder="Enter your full name">
+        </div>
+
+        <div>
+            <label>Phone Number</label>
+            <input type="tel" id="customerPhone" placeholder="Enter phone number">
+        </div>
+    </div>
+</section>
+
+
+<!-- ROOM BOOKING -->
+<section class="section">
+    <h2>Room Booking</h2>
+
+    <p>Select one room below.</p>
+
+    <div class="grid">
+
+        <div class="card room-card" onclick="selectRoom(1,300,this)">
+            <h3>Room 1</h3>
+            <p>King Room</p>
+            <div class="price">GH₵300 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(2,300,this)">
+            <h3>Room 2</h3>
+            <p>King Room</p>
+            <div class="price">GH₵300 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(3,150,this)">
+            <h3>Room 3</h3>
+            <p>Single Room</p>
+            <div class="price">GH₵150 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(4,150,this)">
+            <h3>Room 4</h3>
+            <p>Single Room</p>
+            <div class="price">GH₵150 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(5,300,this)">
+            <h3>Room 5</h3>
+            <p>King Room</p>
+            <div class="price">GH₵300 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(6,300,this)">
+            <h3>Room 6</h3>
+            <p>King Room</p>
+            <div class="price">GH₵300 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(7,100,this)">
+            <h3>Room 7</h3>
+            <p>Single Room</p>
+            <div class="price">GH₵100 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(8,100,this)">
+            <h3>Room 8</h3>
+            <p>Single Room</p>
+            <div class="price">GH₵100 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(9,500,this)">
+            <h3>Room 9</h3>
+            <p>King-size Master Room</p>
+            <div class="price">GH₵500 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(10,200,this)">
+            <h3>Room 10</h3>
+            <p>Double Room</p>
+            <div class="price">GH₵200 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(11,300,this)">
+            <h3>Room 11</h3>
+            <p>King Room</p>
+            <div class="price">GH₵300 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(12,300,this)">
+            <h3>Room 12</h3>
+            <p>King Room</p>
+            <div class="price">GH₵300 / night</div>
+        </div>
+
+        <div class="card room-card" onclick="selectRoom(13,150,this)">
+            <h3>Room 13</h3>
+            <p>Single Room</p>
+            <div class="price">GH₵150 / night</div>
+        </div>
+
+    </div>
+
+    <div class="grid" style="margin-top:20px">
+
+        <div>
+            <label>Date of Arrival</label>
+            <input type="date" id="arrivalDate" onchange="calculateRoomTotal()">
+        </div>
+
+        <div>
+            <label>Date of Departure</label>
+            <input type="date" id="departureDate" onchange="calculateRoomTotal()">
+        </div>
+
+    </div>
+
+    <div class="total-box">
+        <p>Selected Room: <strong id="selectedRoom">None</strong></p>
+        <p>Number of Nights: <strong id="nights">0</strong></p>
+        <p>Room Cost:</p>
+        <div class="total" id="roomTotal">GH₵0</div>
+    </div>
+</section>
+
+
+<!-- FOOD -->
+<section class="section" id="food">
+
+<h2>Food, Pastries & Pizza</h2>
+
+<p>
+Select the quantity you want. You can order <strong>2, 3, 5 or any number</strong>
+of each item. The system will automatically calculate the total.
+</p>
+
+<h3>Food</h3>
+
+<div class="grid">
+
+    <div class="card food-item">
+        <h3>Banku & Tilapia</h3>
+        <div class="price">GH₵100</div>
+        <div class="quantity">
+            <button onclick="changeQty('bankuTilapia',-1)">−</button>
+            <input id="bankuTilapia" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('bankuTilapia',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Banku & Okro</h3>
+        <div class="price">GH₵60</div>
+        <div class="quantity">
+            <button onclick="changeQty('bankuOkro',-1)">−</button>
+            <input id="bankuOkro" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('bankuOkro',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Plain Rice & Chicken</h3>
+        <div class="price">GH₵50</div>
+        <div class="quantity">
+            <button onclick="changeQty('plainRice',-1)">−</button>
+            <input id="plainRice" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('plainRice',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Jollof & Chicken</h3>
+        <div class="price">GH₵50</div>
+        <div class="quantity">
+            <button onclick="changeQty('jollof',-1)">−</button>
+            <input id="jollof" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('jollof',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Special Jollof & Chicken</h3>
+        <div class="price">GH₵50</div>
+        <div class="quantity">
+            <button onclick="changeQty('specialJollof',-1)">−</button>
+            <input id="specialJollof" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('specialJollof',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Fried Rice & Chicken</h3>
+        <div class="price">GH₵50</div>
+        <div class="quantity">
+            <button onclick="changeQty('friedRice',-1)">−</button>
+            <input id="friedRice" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('friedRice',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Special Fried Rice</h3>
+        <div class="price">GH₵100</div>
+        <div class="quantity">
+            <button onclick="changeQty('specialFriedRice',-1)">−</button>
+            <input id="specialFriedRice" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('specialFriedRice',1)">+</button>
+        </div>
+    </div>
+
+</div>
+
+
+<h3>Pastries</h3>
+
+<div class="grid">
+
+    <div class="card food-item">
+        <h3>Meat Pie</h3>
+        <div class="price">GH₵10</div>
+        <div class="quantity">
+            <button onclick="changeQty('meatPie',-1)">−</button>
+            <input id="meatPie" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('meatPie',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Chips</h3>
+        <div class="price">GH₵10</div>
+        <div class="quantity">
+            <button onclick="changeQty('chips',-1)">−</button>
+            <input id="chips" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('chips',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Cookies</h3>
+        <div class="price">GH₵10</div>
+        <div class="quantity">
+            <button onclick="changeQty('cookies',-1)">−</button>
+            <input id="cookies" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('cookies',1)">+</button>
+        </div>
+    </div>
+
+</div>
+
+
+<h3>Pizza</h3>
+
+<div class="grid">
+
+    <div class="card food-item">
+        <h3>Small Pizza</h3>
+        <div class="price">GH₵120</div>
+        <div class="quantity">
+            <button onclick="changeQty('smallPizza',-1)">−</button>
+            <input id="smallPizza" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('smallPizza',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Medium Pizza - GH₵150</h3>
+        <div class="price">GH₵150</div>
+        <div class="quantity">
+            <button onclick="changeQty('mediumPizza150',-1)">−</button>
+            <input id="mediumPizza150" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('mediumPizza150',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Medium Pizza - GH₵170</h3>
+        <div class="price">GH₵170</div>
+        <div class="quantity">
+            <button onclick="changeQty('mediumPizza170',-1)">−</button>
+            <input id="mediumPizza170" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('mediumPizza170',1)">+</button>
+        </div>
+    </div>
+
+    <div class="card food-item">
+        <h3>Family Pizza + Coke</h3>
+        <div class="price">GH₵200</div>
+        <div class="quantity">
+            <button onclick="changeQty('familyPizza',-1)">−</button>
+            <input id="familyPizza" type="number" min="0" value="0"
+                   onchange="calculateFoodTotal()">
+            <button onclick="changeQty('familyPizza',1)">+</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="total-box">
+    <p>Food & Pastry Total</p>
+    <div class="total" id="foodTotal">GH₵0</div>
+</div>
+
+</section>
+
+
+<!-- ORDER SUMMARY -->
+<section class="section" id="summary">
+
+<h2>Booking & Order Summary</h2>
+
+<div id="summaryText">
+    Select a room or food items to see your summary.
+</div>
+
+<div class="total-box">
+    <p>Room Total: <strong id="summaryRoom">GH₵0</strong></p>
+    <p>Food Total: <strong id="summaryFood">GH₵0</strong></p>
+    <hr>
+    <p>GRAND TOTAL</p>
+    <div class="total" id="grandTotal">GH₵0</div>
+</div>
+
+
+<h3>Payment</h3>
+
+<div class="payment-box">
+    <p><strong>MoMo Number:</strong> 0597793508</p>
+    <p><strong>MoMo Name:</strong> TWINKLE STAR aged concern</p>
+    <p>Make your payment to the number above.</p>
+</div>
+
+<label>Payment Method</label>
+<select id="paymentMethod">
+    <option value="">Select payment method</option>
+    <option>Mobile Money</option>
+    <option>Cash</option>
+</select>
+
+<label>Payment Status</label>
+<select id="paymentStatus">
+    <option value="Pending">Pending</option>
+    <option value="Paid">Paid</option>
+    <option value="Part Payment">Part Payment</option>
+</select>
+
+<label>Additional Message</label>
+<textarea id="customerMessage" rows="4"
+placeholder="Any additional information..."></textarea>
+
+<br><br>
+
+<button class="primary" onclick="submitBooking()">
+    SEND BOOKING / ORDER ON WHATSAPP
+</button>
+
+<div id="successMessage"></div>
+
+</section>
+
+
+<!-- ADMIN -->
+<section class="section hidden" id="adminSection">
+
+<h2>ADMIN SECTION</h2>
+
+<p class="small-text">
+This admin section stores bookings/orders on this device.
+</p>
+
+<div class="total-box">
+    <p>Total saved bookings/orders:</p>
+    <div class="total" id="bookingCount">0</div>
+</div>
+
+<div id="adminBookings"></div>
+
+<br>
+
+<button class="secondary" onclick="clearBookings()">
+    Clear All Saved Orders
+</button>
+
+</section>
+
+</div>
+
+
+<footer>
+    <h3>TWINKLE STAR HOTEL HOUSE AND RESTAURANT</h3>
+    <p>WhatsApp / Booking: 0244041545</p>
+    <p>MoMo: 0597793508</p>
+    <p>MoMo Name: TWINKLE STAR aged concern</p>
+</footer>
+
+
+<script>
+
+let selectedRoomNumber = null;
+let selectedRoomPrice = 0;
+
+const foodPrices = {
+
+    bankuTilapia: 100,
+    bankuOkro: 60,
+    plainRice: 50,
+    jollof: 50,
+    specialJollof: 50,
+    friedRice: 50,
+    specialFriedRice: 100,
+
+    meatPie: 10,
+    chips: 10,
+    cookies: 10,
+
+    smallPizza: 120,
+    mediumPizza150: 150,
+    mediumPizza170: 170,
+    familyPizza: 200
+};
+
+
+function goTo(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+function selectRoom(number, price, element) {
+
+    document.querySelectorAll(".room-card").forEach(function(card) {
+        card.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    selectedRoomNumber = number;
+    selectedRoomPrice = price;
+
+    document.getElementById("selectedRoom").textContent =
+        "Room " + number + " - GH₵" + price + " per night";
+
+    calculateRoomTotal();
+    updateSummary();
+}
+
+
+function calculateRoomTotal() {
+
+    let arrival = document.getElementById("arrivalDate").value;
+    let departure = document.getElementById("departureDate").value;
+
+    if (!arrival || !departure) {
+        document.getElementById("nights").textContent = "0";
+        document.getElementById("roomTotal").textContent = "GH₵0";
+        updateSummary();
+        return;
+    }
+
+    let start = new Date(arrival);
+    let end = new Date(departure);
+
+    let difference = end - start;
+    let nights = difference / (1000 * 60 * 60 * 24);
+
+    if (nights <= 0) {
+        document.getElementById("nights").textContent = "0";
+        document.getElementById("roomTotal").textContent = "GH₵0";
+        updateSummary();
+        return;
+    }
+
+    let total = nights * selectedRoomPrice;
+
+    document.getElementById("nights").textContent = nights;
+    document.getElementById("roomTotal").textContent =
+        "GH₵" + total;
+
+    updateSummary();
+}
+
+
+function changeQty(id, amount) {
+
+    let input = document.getElementById(id);
+
+    let current = parseInt(input.value) || 0;
+
+    current += amount;
+
+    if (current < 0) {
+        current = 0;
+    }
+
+    input.value = current;
+
+    calculateFoodTotal();
+}
+
+
+function calculateFoodTotal() {
+
+    let total = 0;
+
+    for (let item in foodPrices) {
+
+        let input = document.getElementById(item);
+
+        if (input) {
+
+            let quantity = parseInt(input.value) || 0;
+
+            if (quantity < 0) {
+                quantity = 0;
+                input.value = 0;
+            }
+
+            total += quantity * foodPrices[item];
+        }
+    }
+
+    document.getElementById("foodTotal").textContent =
+        "GH₵" + total;
+
+    updateSummary();
+}
+
+
+function getRoomTotal() {
+
+    let arrival = document.getElementById("arrivalDate").value;
+    let departure = document.getElementById("departureDate").value;
+
+    if (!arrival || !departure || !selectedRoomNumber) {
+        return 0;
+    }
+
+    let start = new Date(arrival);
+    let end = new Date(departure);
+
+    let nights = (end - start) /
+        (1000 * 60 * 60 * 24);
+
+    if (nights <= 0) {
+        return 0;
+    }
+
+    return nights * selectedRoomPrice;
+}
+
+
+function getFoodTotal() {
+
+    let total = 0;
+
+    for (let item in foodPrices) {
+
+        let input = document.getElementById(item);
+
+        if (input) {
+            let quantity = parseInt(input.value) || 0;
+            total += quantity * foodPrices[item];
+        }
+    }
+
+    return total;
+}
+
+
+function getFoodDetails() {
+
+    let names = {
+
+        bankuTilapia: "Banku & Tilapia",
+        bankuOkro: "Banku & Okro",
+        plainRice: "Plain Rice & Chicken",
+        jollof: "Jollof & Chicken",
+        specialJollof: "Special Jollof & Chicken",
+        friedRice: "Fried Rice & Chicken",
+        specialFriedRice: "Special Fried Rice",
+
+        meatPie: "Meat Pie",
+        chips: "Chips",
+        cookies: "Cookies",
+
+        smallPizza: "Small Pizza",
+        mediumPizza150: "Medium Pizza GH₵150",
+        mediumPizza170: "Medium Pizza GH₵170",
+        familyPizza: "Family Pizza + Coke"
+    };
+
+    let details = [];
+
+    for (let item in foodPrices) {
+
+        let input = document.getElementById(item);
+
+        if (input) {
+
+            let quantity = parseInt(input.value) || 0;
+
+            if (quantity > 0) {
+
+                let amount = quantity * foodPrices[item];
+
+                details.push(
+                    quantity +
+                    " x " +
+                    names[item] +
+                    " = GH₵" +
+                    amount
+                );
+            }
+        }
+    }
+
+    return details;
+}
+
+
+function updateSummary() {
+
+    let roomTotal = getRoomTotal();
+    let foodTotal = getFoodTotal();
+    let grandTotal = roomTotal + foodTotal;
+
+    document.getElementById("summaryRoom").textContent =
+        "GH₵" + roomTotal;
+
+    document.getElementById("summaryFood").textContent =
+        "GH₵" + foodTotal;
+
+    document.getElementById("grandTotal").textContent =
+        "GH₵" + grandTotal;
+
+    let html = "";
+
+    if (selectedRoomNumber) {
+
+        html += "<p><strong>Room:</strong> Room " +
+            selectedRoomNumber +
+            "</p>";
+
+        html += "<p><strong>Room price:</strong> GH₵" +
+            selectedRoomPrice +
+            " per night</p>";
+    }
+
+    let arrival = document.getElementById("arrivalDate").value;
+    let departure = document.getElementById("departureDate").value;
+
+    if (arrival) {
+        html += "<p><strong>Arrival:</strong> " +
+            arrival + "</p>";
+    }
+
+    if (departure) {
+        html += "<p><strong>Departure:</strong> " +
+            departure + "</p>";
+    }
+
+    let foodDetails = getFoodDetails();
+
+    if (foodDetails.length > 0) {
+
+        html += "<h3>Food / Pastries / Pizza</h3>";
+
+        foodDetails.forEach(function(item) {
+            html += "<p>• " + item + "</p>";
+        });
+    }
+
+    if (html === "") {
+        html = "Select a room or food items to see your summary.";
+    }
+
+    document.getElementById("summaryText").innerHTML = html;
+}
+
+
+function submitBooking() {
+
+    let name = document.getElementById("customerName").value.trim();
+    let phone = document.getElementById("customerPhone").value.trim();
+
+    if (!name) {
+        alert("Please enter the customer's name.");
+        return;
+    }
+
+    if (!phone) {
+        alert("Please enter the customer's phone number.");
+        return;
+    }
+
+    let roomTotal = getRoomTotal();
+    let foodTotal = getFoodTotal();
+    let grandTotal = roomTotal + foodTotal;
+
+    if (!selectedRoomNumber && foodTotal === 0) {
+        alert("Please select a room or at least one food item.");
+        return;
+    }
+
+    let arrival = document.getElementById("arrivalDate").value;
+    let departure = document.getElementById("departureDate").value;
+
+    let nights = 0;
+
+    if (arrival && departure) {
+
+        let start = new Date(arrival);
+        let end = new Date(departure);
+
+        nights = (end - start) /
+            (1000 * 60 * 60 * 24);
+    }
+
+    let paymentMethod =
+        document.getElementById("paymentMethod").value;
+
+    let paymentStatus =
+        document.getElementById("paymentStatus").value;
+
+    let message =
+        document.getElementById("customerMessage").value;
+
+    let foodDetails = getFoodDetails();
+
+    let whatsappText =
+        "TWINKLE STAR HOTEL HOUSE AND RESTAURANT%0A%0A" +
+
+        "NEW BOOKING / ORDER%0A%0A" +
+
+        "Customer Name: " +
+        encodeURIComponent(name) + "%0A" +
+
+        "Phone: " +
+        encodeURIComponent(phone) + "%0A%0A";
+
+    if (selectedRoomNumber) {
+
+        whatsappText +=
+            "ROOM BOOKING%0A" +
+
+            "Room: Room " +
+            selectedRoomNumber + "%0A" +
+
+            "Price: GH₵" +
+            selectedRoomPrice +
+            " per night%0A" +
+
+            "Arrival: " +
+            arrival + "%0A" +
+
+            "Departure: " +
+            departure + "%0A" +
+
+            "Nights: " +
+            nights + "%0A" +
+
+            "Room Total: GH₵" +
+            roomTotal + "%0A%0A";
+    }
+
+    if (foodDetails.length > 0) {
+
+        whatsappText +=
+            "FOOD / PASTRIES / PIZZA%0A";
+
+        foodDetails.forEach(function(item) {
+
+            whatsappText +=
+                encodeURIComponent(item) +
+                "%0A";
+        });
+
+        whatsappText +=
+            "%0AFood Total: GH₵" +
+            foodTotal +
+            "%0A%0A";
+    }
+
+    whatsappText +=
+        "GRAND TOTAL: GH₵" +
+        grandTotal +
+        "%0A%0A" +
+
+        "Payment Method: " +
+        encodeURIComponent(paymentMethod || "Not selected") +
+        "%0A" +
+
+        "Payment Status: " +
+        encodeURIComponent(paymentStatus) +
+        "%0A%0A" +
+
+        "MoMo Number: 0597793508%0A" +
+
+        "MoMo Name: TWINKLE STAR aged concern%0A%0A" +
+
+        "Additional Message: " +
+        encodeURIComponent(message || "None");
+
+
+    saveBooking({
+        name: name,
+        phone: phone,
+        room: selectedRoomNumber ?
+            "Room " + selectedRoomNumber : "Food only",
+        arrival: arrival,
+        departure: departure,
+        nights: nights,
+        roomTotal: roomTotal,
+        foodDetails: foodDetails,
+        foodTotal: foodTotal,
+        grandTotal: grandTotal,
+        paymentMethod: paymentMethod,
+        paymentStatus: paymentStatus,
+        date: new Date().toLocaleString()
+    });
+
+
+    document.getElementById("successMessage").innerHTML =
+        '<div class="success">' +
+        '<strong>Your order/booking has been prepared.</strong><br>' +
+        'Tap the WhatsApp button below to send it to TWINKLE STAR.' +
+        '<br><br>' +
+        '<button class="primary" onclick="sendWhatsApp(\'' +
+        whatsappText +
+        '\')">OPEN WHATSAPP</button>' +
+        '</div>';
+}
+
+
+function sendWhatsApp(text) {
+
+    let url =
+        "https://wa.me/233244041545?text=" +
+        text;
+
+    window.open(url, "_blank");
+}
+
+
+function saveBooking(data) {
+
+    let bookings =
+        JSON.parse(localStorage.getItem("twinkleStarBookings") || "[]");
+
+    bookings.push(data);
+
+    localStorage.setItem(
+        "twinkleStarBookings",
+        JSON.stringify(bookings)
+    );
+}
+
+
+function openAdmin() {
+
+    let password = prompt("Enter Admin Password:");
+
+    if (password !== "1234") {
+
+        if (password !== null) {
+            alert("Incorrect admin password.");
+        }
 
         return;
     }
 
-    let total = 0;
+    document.getElementById("adminSection")
+        .classList.remove("hidden");
 
-    let roomText = 'No room selected';
+    displayAdminBookings();
 
-    if (selectedRoom) {
-
-        roomText =
-            selectedRoom.name +
-            ' - GH₵' +
-            selectedRoom.price;
-
-        total += selectedRoom.price;
-    }
-
-    let foodText = 'No food selected';
-
-    if (selectedFoods.length > 0) {
-
-        foodText = selectedFoods.map(function(food) {
-
-            total += food.price;
-
-            return food.name + ' - GH₵' + food.price;
-
-        }).join('<br>');
-    }
-
-    const summary = document.getElementById('summary');
-
-    summary.style.display = 'block';
-
-    summary.innerHTML = `
-        <h3>Order Submitted</h3>
-
-        <p><strong>Name:</strong> ${name}</p>
-
-        <p><strong>Phone:</strong> ${phone}</p>
-
-        <p><strong>Date:</strong> ${date}</p>
-
-        <p><strong>Room:</strong><br>${roomText}</p>
-
-        <p><strong>Food:</strong><br>${foodText}</p>
-
-        <p><strong>Additional Request:</strong><br>
-        ${message || 'None'}
-        </p>
-
-        <h3>Total: GH₵${total}</h3>
-
-        <p>Thank you for choosing TWINKLE STAR HOTEL HOUSE AND RESTAURANT.</p>
-    `;
-
-    summary.scrollIntoView({
-        behavior: 'smooth'
-    });
+    document.getElementById("adminSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 }
 
-</script></body>
+
+function displayAdminBookings() {
+
+    let bookings =
+        JSON.parse(localStorage.getItem("twinkleStarBookings") || "[]");
+
+    document.getElementById("bookingCount")
+        .textContent = bookings.length;
+
+    let container =
+        document.getElementById("adminBookings");
+
+    if (bookings.length === 0) {
+
+        container.innerHTML =
+            "<p>No saved bookings/orders yet.</p>";
+
+        return;
+    }
+
+    let html =
+        '<table class="admin-table">' +
+        '<tr>' +
+        '<th>#</th>' +
+        '<th>Customer</th>' +
+        '<th>Phone</th>' +
+        '<th>Room</th>' +
+        '<th>Arrival</th>' +
+        '<th>Departure</th>' +
+        '<th>Food</th>' +
+        '<th>Total</th>' +
+        '<th>Payment</th>' +
+        '</tr>';
+
+    bookings.forEach(function(booking, index) {
+
+        let food =
+            booking.foodDetails &&
+            booking.foodDetails.length > 0
+            ? booking.foodDetails.join("<br>")
+            : "None";
+
+        html +=
+            "<tr>" +
+
+            "<td>" +
+            (index + 1) +
+            "</td>" +
+
+            "<td>" +
+            booking.name +
+            "</td>" +
+
+            "<td>" +
+            booking.phone +
+            "</td>" +
+
+            "<td>" +
+            booking.room +
+            "</td>" +
+
+            "<td>" +
+            (booking.arrival || "-") +
+            "</td>" +
+
+            "<td>" +
+            (booking.departure || "-") +
+            "</td>" +
+
+            "<td>" +
+            food +
+            "</td>" +
+
+            "<td>GH₵" +
+            booking.grandTotal +
+            "</td>" +
+
+            "<td>" +
+            booking.paymentStatus +
+            "</td>" +
+
+            "</tr>";
+    });
+
+    html += "</table>";
+
+    container.innerHTML = html;
+}
+
+
+function clearBookings() {
+
+    let answer =
+        confirm(
+            "Are you sure you want to delete all saved bookings?"
+        );
+
+    if (!answer) {
+        return;
+    }
+
+    localStorage.removeItem("twinkleStarBookings");
+
+    displayAdminBookings();
+}
+
+
+calculateFoodTotal();
+updateSummary();
+
+</script>
+
+</body>
 </html>
